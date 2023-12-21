@@ -119,7 +119,11 @@ function lookup(ctx: RadixRouterContext, path: string): MatchedRoute {
   return node.data;
 }
 
-/** 插入新的路由 */
+/** 
+ * 插入新的路由
+ * 将path通过/分割后，依次插入radix tree
+ * tree 节点分为：普通节点，动态节点，动态混合节点，泛节点，后3种用于动态匹配
+ */
 function insert(ctx: RadixRouterContext, path: string, data: any) {
   let isStaticRoute = true;
 
